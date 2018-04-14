@@ -31,13 +31,13 @@ export class ChatRoomComponent implements OnInit {
   }
 
   submitMessage(form: FormGroup) {
-    form.controls.text.setValue('')
     const messageToSend = {
       ...form.value,
       ...this.userInfo,
       created: Date.now()
     };
     this.messagesCollection.add(messageToSend);
+    form.controls.text.setValue('');
   }
 
   goBack() {
