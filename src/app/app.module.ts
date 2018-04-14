@@ -1,18 +1,17 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { BrowserModule } from "@angular/platform-browser";
+import { NgModule } from "@angular/core";
 
-
-import { AppComponent } from './app.component';
-
+import { AppComponent } from "./app.component";
+import { LoginComponent } from "./login/login.component";
+import { ChatRoomComponent } from "./chat-room/chat-room.component";
+import { AppRoutingModule } from "./app-routing.module";
+import { UserInfoDirective } from './directives/user-info.directive';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule
-  ],
-  providers: [],
+  declarations: [AppComponent, LoginComponent, ChatRoomComponent, UserInfoDirective],
+  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  providers: [UserInfoDirective],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
