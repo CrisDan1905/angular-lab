@@ -1,4 +1,22 @@
-<div *ngFor="let message of messagesList">
-  <span>mensage: {{message.text}}</span>
-  <span>usuario: {{message.user}}</span>
+
+<div class="panel">
+  <div class="panel__top">
+    <div class="panel__userName">
+        USUARIO: {{userInfo['userName'] | uppercase}}
+    </div>
+    <button class="panel__back" (click)="goBack()">⬅️</button>
+  </div>
+  <div class="panel__messages">
+    <div class="panel__message" *ngFor="let message of messagesList">
+      <div class="panel__info">
+        <span class="panel__text">{{message['text']}}</span>
+        <span class="panel__sender" [ngClass]="{'principal-sender' : message.userName === userInfo.userName}">↪️{{message['userName']}}</span>
+      </div>
+        <span class="panel__timeStamp">{{message['created'] | date:'medium'}}</span>
+    </div>
+  </div>
+    <form action="" #messageForm="ngForm" (ngSubmit)="submitMessage(messageForm)" class="panel__send">
+      <textarea type="text" class="panel__input" name="text" ngModel></textarea>
+      <button type="submit" class="panel__button">➡️</button>
+    </form>
 </div>

@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   submitForm(form) {
     this.userInfoDirective.userInfo = form.value;
     console.log(this.userInfoDirective.userInfo);
+    localStorage.setItem('userInfo', JSON.stringify(form.value));
     this.router.navigate(['/chat-room'])
   }
 

@@ -1,5 +1,5 @@
 import { BrowserModule } from "@angular/platform-browser";
-import { NgModule } from "@angular/core";
+import { NgModule, LOCALE_ID } from "@angular/core";
 
 import { AppComponent } from "./app.component";
 import { LoginComponent } from "./login/login.component";
@@ -18,8 +18,8 @@ import {environment } from '../environments/environment';
     AppRoutingModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule.enablePersistence()],
-  providers: [UserInfoDirective],
+    AngularFirestoreModule],
+  providers: [UserInfoDirective, { provide: LOCALE_ID, useValue: 'en-US' }],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
