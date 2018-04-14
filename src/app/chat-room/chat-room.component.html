@@ -1,3 +1,4 @@
-<p>
-  chat-room works!
-</p>
+<div *ngFor="let message of messagesList">
+  <span>mensage: {{message.text}}</span>
+  <span>usuario: {{message.user}}</span>
+</div>
