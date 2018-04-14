@@ -24,21 +24,20 @@ export class ChatRoomComponent implements OnInit {
     this.messagesCollection = this.afs.collection('messages', ref => ref.orderBy('created', 'asc'));
     // this.messagesCollection.ref.orderBy('created', 'desc');
     this.messages$ = this.messagesCollection.valueChanges();
-    this.messages$.subscribe(data => {console.log(data); this.messagesList = data });
-    console.log(this.messagesCollection, this.messages$)
+    this.messages$.subscribe(data => this.messagesList = data);
   }
 
   ngOnInit() {
   }
 
   submitMessage(form: FormGroup) {
+    form.controls.text.setValue('')
     const messageToSend = {
       ...form.value,
       ...this.userInfo,
       created: Date.now()
     };
     this.messagesCollection.add(messageToSend);
-    console.dir(localStorage.getItem('userInfo'));
   }
 
   goBack() {
